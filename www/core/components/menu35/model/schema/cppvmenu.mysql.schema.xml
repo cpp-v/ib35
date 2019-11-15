@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model package="cppvmenu" baseClass="xPDOObject" platform="mysql" defaultEngine="MyISAM" version="1.0">
+    <object class="Menu35" table="menu35" extends="xPDOSimpleObject">
+        <field key="name" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+        <field key="description" dbtype="text" phptype="string" null="false" default=""/>
+        <field key="parent" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="false" default="0" />
+        <field key="ves" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+        <field key="price" dbtype="float" precision="10" attributes="unsigned" phptype="float" null="false" default="0" />
+        <field key="is_catalog" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="false" default="0" />
+
+        <field key="restint_1" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="false" default="0" />
+        <field key="restint_2" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="false" default="0" />
+        <field key="restint_3" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="false" default="0" />
+ 
+        <field key="reststr_1" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+        <field key="reststr_2" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+        <field key="reststr_3" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+	</object>
+ </model>

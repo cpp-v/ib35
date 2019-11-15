@@ -1,0 +1,8 @@
+<?php
+class MorphT2UpdateProcessor extends modObjectUpdateProcessor {
+    public $classKey = 'Morph35';
+    public $languageTopics = array('counters:default');
+    public $objectType = 'counters.city';
+    //public $permission='CountersCityUpdate';
+}
+return 'MorphT2UpdateProcessor';

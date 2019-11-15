@@ -1,0 +1,8 @@
+<?php
+class MorphT2RemoveProcessor extends modObjectRemoveProcessor {
+    public $classKey = 'Morph35';
+    public $languageTopics = array('counters:default');
+    public $objectType = 'morpher35.morph35adm';
+    //public $permission='CountersCityRemove';
+}
+return 'MorphT2RemoveProcessor';
