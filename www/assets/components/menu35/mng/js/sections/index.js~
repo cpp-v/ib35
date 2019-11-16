@@ -6,7 +6,7 @@ CPPVKOEFS.page.Home = function(config) {
     Ext.applyIf(config,{
         components: [{
             xtype: 'cppvkoefs-panel-home'
-            ,renderTo: 'morph35-panel-home-div'
+            ,renderTo: 'cppvkoefs-panel-home-div'
         }]
     });
     CPPVKOEFS.page.Home.superclass.constructor.call(this,config);

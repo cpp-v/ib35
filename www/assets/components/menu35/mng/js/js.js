@@ -1,4 +1,4 @@
-alert("cppvkoefs js.js START!"); 
+//alert("cppvkoefs js.js START!"); 
 var CPPVMENU = function(config) {
     config = config || {};
     CPPVMENU.superclass.constructor.call(this,config);
@@ -10,4 +10,4 @@ Ext.reg('cppvmenu',CPPVMENU);
 CPPVMENU = new CPPVMENU();
 
 
-alert("cppvkoefs js.js end");
+//alert("cppvkoefs js.js end");

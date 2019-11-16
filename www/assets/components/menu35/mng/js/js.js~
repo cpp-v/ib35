@@ -3,7 +3,7 @@ var CPPVMENU = function(config) {
     config = config || {};
     CPPVMENU.superclass.constructor.call(this,config);
 };
-Ext.extend(CPPVKOEFS,Ext.Component,{
+Ext.extend(CPPVMENU,Ext.Component,{
     page:{},window:{},grid:{},tree:{},panel:{},combo:{},config: {}
 });
 Ext.reg('cppvmenu',CPPVMENU);

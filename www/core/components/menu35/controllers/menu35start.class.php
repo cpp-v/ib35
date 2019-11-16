@@ -37,15 +37,12 @@ class Menu35Menu35startManagerController extends modExtraManagerController {
     	 }
     	 
     public function loadCustomCssJs() {
-/*
-        $this->addJavascript($this->koefs->config['jsUrl'].'widgets/koefs.combo.auto.js');
-        $this->addJavascript($this->koefs->config['jsUrl'].'widgets/koefs.grid.js');
-        $this->addJavascript($this->koefs->config['jsUrl'].'widgets/auto.grid.js');
-        $this->addJavascript($this->koefs->config['jsUrl'].'widgets/propgrid/propgrid.js');
-       
+        $this->addJavascript($this->koefs->config['jsUrl'].'widgets/stores.js');
+        $this->addJavascript($this->koefs->config['jsUrl'].'widgets/main.grid.js');
         $this->addJavascript($this->koefs->config['jsUrl'].'widgets/home.panel.js');
         $this->addLastJavascript($this->koefs->config['jsUrl'].'sections/index.js');
-*/
+
+
 /*
 
         $this->addJavascript($this->morph35->config['jsUrl'].'widgets/mrph35_T2.grid.js');

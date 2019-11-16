@@ -1,5 +1,5 @@
 //alert("streets.grid.js  start");
-Ext.onReady(function(){
+//Ext.onReady(function(){
 	    
 CPPVKOEFS.grid.koefsColModel = new Ext.grid.ColumnModel([
     new Ext.grid.RowNumberer(),
@@ -99,13 +99,15 @@ CPPVKOEFS.grid.koefsColModel = new Ext.grid.ColumnModel([
 
 
 
-CPPVKOEFS.grid.koefs = function(config) {
-    config = config || {};
-    Ext.applyIf(config,{
-        id: 'cppvkoefs-grid-koefs'
+CPPVMENU.grid.main_CFG = {
+	/*
+        id: 'menu35-grid-main'
         ,url: '/assets/components/cppvkoefs/mng/connector.php'
         ,baseParams: { action: 't1/getlist' }
         ,fields: ['id','name','dist','count','classauto','k_sezon','k_auto','k_pass','k_dist','price','restint_1','restint_2']
+   */      
+        ,store: CPPMENU.MainStoreCfg,
+
         ,paging: true
         ,pageSize: 50
         ,remoteSort: false
@@ -197,21 +199,7 @@ CPPVKOEFS.grid.koefs = function(config) {
         }
     });
    }
-})
-
-
-
-    
-CPPVKOEFS.grid.koefs.superclass.constructor.call(this,config);
-      //  alert("Counters.grid.Counters end");
-				
-};						//alert("Counters.grid.Citys 1");
-
-
-        // - - - - -
-Ext.extend(CPPVKOEFS.grid.koefs,MODx.grid.Grid,{
-    
-    search: function(tf,nv,ov) {
+   ,search: function(tf,nv,ov) {
         var s = this.getStore();
         s.baseParams.query = tf.getValue();
                         //alert('tf='+s.baseParams.query);
@@ -221,12 +209,14 @@ Ext.extend(CPPVKOEFS.grid.koefs,MODx.grid.Grid,{
 	style: {
    	padding: '10px 20px'
 	}
-});
-Ext.reg('cppvkoefs-grid-koefs',CPPVKOEFS.grid.koefs);
+};
+
+
+
 
 
 
                                                                 //alert("Counters.grid.Citys end");
-});
+//});//Ext.onReady
 
 
