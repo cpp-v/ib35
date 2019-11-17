@@ -78,7 +78,6 @@ class CppDebug{
         //if($arrParam['onlyKey']) add_test_str($pref.'$level='.$level." key=".$k);
         //else 
        }      
-     
      }
      //$level--; 
    }

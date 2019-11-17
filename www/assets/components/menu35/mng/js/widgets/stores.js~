@@ -3,7 +3,7 @@ CPPVMENU.writer_1 = new Ext.data.JsonWriter({
       writeAllFields: true // иначе все поля зашлет на сервер
     });
 
-CPPMENU.MainStoreCfg={ 
+CPPVMENU.MainStoreCfg={ 
  baseParams:{action: 'getlist'},
  root: 'results',
  totalProperty: 'total',
@@ -15,12 +15,13 @@ CPPMENU.MainStoreCfg={
             'name',
             {name: 'description', type: 'text'},
             'parent',            
-            'ves',,            
+            'ves',          
             'price',            
-            'is_catalog'}            
+            'is_catalog',
+            'restint_2'           
         ],
-        proxy: new Ext.data.HttpProxy({
-            url: '/assets/components/menu35/mng/connector.php'
-        })
+ proxy: new Ext.data.HttpProxy({
+            url: '/mdx/assets/components/menu35/mng/connector.php'
+        })        
         
 };

@@ -1,7 +1,8 @@
 <?
 /*
 include $_SERVER['DOCUMENT_ROOT']."/assets/cppv/UTILS/DEBUG/debugM.php";
-$dbg=new CppDebug(array('dir'=>__DIR__));
+CppDebug::$arrItems[0]=new CppDebug(array('dir'=>__DIR__));
+$dbg=&CppDebug::$arrItems[0];
 $dbg->clear(); 
 $dbg->add(__FILE__);
 $dbg->add(date("d.m.Y H:i:s"));

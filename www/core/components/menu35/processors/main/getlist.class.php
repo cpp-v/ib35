@@ -1,10 +1,19 @@
 <?php
-class CppvkoefsGetListProcessor extends modObjectGetListProcessor {
-    public $classKey = 'TaxiKoefs';
-    public $languageTopics = array('cppvkoefs:default');
+include_once $_SERVER['DOCUMENT_ROOT']."/mdx/assets/cppv/UTILS/DEBUG/debugM.php";
+CppDebug::$arrItems[1]=new CppDebug(array('dir'=>$_SERVER['DOCUMENT_ROOT'].'/mdx'));
+$dbg=&CppDebug::$arrItems[1];
+$dbg->clear(); 
+$dbg->add(__FILE__);
+
+$dbg->add(date("d.m.Y H:i:s"));
+
+class Menu35GetListProcessor extends modObjectGetListProcessor {
+
+    public $classKey = 'Menu35';
+    public $languageTopics = array('menu35M:default');
     public function prepareQueryBeforeCount(xPDOQuery $c) {
     $query = $this->getProperty('query');
-    
+     
     if (!empty($query)) {
         $c->where(array(
             'name:LIKE' => '%'.$query.'%',
@@ -12,13 +21,21 @@ class CppvkoefsGetListProcessor extends modObjectGetListProcessor {
     }
     $c->sortby('restint_2','ASC');
     $c->prepare();
+
+    include_once $_SERVER['DOCUMENT_ROOT']."/mdx/assets/cppv/UTILS/DEBUG/debugM.php";
+    $dbg=&CppDebug::$arrItems[1];
+		$dbg->add(__METHOD__);	
+		//$c->prepare();
+		$sql=$c->toSQL();
+		$dbg->addVar('sql',$sql);
+
     return $c;
 }
     public $defaultSortField = 'id';
     //public $defaultSortDirection = 'DESC';
-    public $objectType = 'cppvkoefs.koefs';
+    public $objectType = 'menu35.mane';
 } 
-return 'CppvkoefsGetListProcessor';
+return 'Menu35GetListProcessor';
 
 /*
 

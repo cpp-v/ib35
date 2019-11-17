@@ -1,7 +1,7 @@
 //alert("streets.grid.js  start");
 //Ext.onReady(function(){
 	    
-CPPVKOEFS.grid.koefsColModel = new Ext.grid.ColumnModel([
+CPPVMENU.grid.mainColModel = new Ext.grid.ColumnModel([
     new Ext.grid.RowNumberer(),
         {
             header: 'н сортировки'
@@ -17,79 +17,38 @@ CPPVKOEFS.grid.koefsColModel = new Ext.grid.ColumnModel([
             ,dataIndex: 'name'
             ,sortable: true
             ,width: 100
+            //,editor: { xtype: 'textfield' }
+        }
+        
+        ,
+        {
+            header: 'Состав'
+            ,dataIndex: 'description'
+            ,sortable: true
+            ,width: 100
             ,editor: { xtype: 'textfield' }
         },
         {
-            header: '1 Расстояние'
-            ,dataIndex: 'restint_1'
+            header: 'Порция(вес)'
+            ,dataIndex: 'ves'
             ,sortable: true
             ,width: 100
             ,editor: { xtype: 'numberfield' }
         },
         {
-            header: '2 Расстояние'
-            ,dataIndex: 'dist'
+            header: 'Каталог'
+            ,dataIndex: 'is_catalog'
             ,sortable: true
             ,width: 100
             ,editor: { xtype: 'numberfield' }
-        },
-        {
-            header: 'Кол-во людей'
-            ,dataIndex: 'count'
-            ,sortable: true
-            ,width: 100
-            ,editor: { xtype: 'numberfield' }
-        },
-        
-        {
-            header: 'Класс автомобиля'
-            ,dataIndex: 'classauto'
-            ,sortable: true
-            ,width: 100
-            //,editor: { xtype: 'cppvkoefs-combo-auto', renderer: true }
-            ,renderer: Ext.util.Format.comboRenderer(CPPVKOEFS.grid.comboAuto) 
-            ,editor: CPPVKOEFS.grid.comboAuto
-            
-        },
-        
-        {
-            header: 'k сезон'
-            ,dataIndex: 'k_sezon'
-            ,sortable: true
-            ,width: 100
-            ,editor: { xtype: 'numberfield' }
-        },
-        {
-            header: 'k авто'
-            ,dataIndex: 'k_auto'
-            ,sortable: true
-            ,width: 100
-            ,editor: { xtype: 'numberfield' }
-        },
-        {
-            header: 'k пассажиров'
-            ,dataIndex: 'k_pass'
-            ,sortable: true
-            ,width: 100
-            ,editor: { xtype: 'numberfield' }
-        },
-        {
-            header: 'k растояния'
-            ,dataIndex: 'k_dist'
-            ,sortable: true
-            ,width: 100
-            ,editor: { xtype: 'numberfield' }
-        },
-        {
-            header: 'Цена'
-            ,dataIndex: 'price'
-            ,sortable: true
-            ,width: 100
-            ,editor: { xtype: 'numberfield' }
-        },
-        {
+        },{
             header: 'ID'
             ,dataIndex: 'id'
+            ,sortable: true
+            ,width: 5
+        },{
+            header: 'Родитель'
+            ,dataIndex: 'parent'
             ,sortable: true
             ,width: 5
         }
@@ -100,23 +59,29 @@ CPPVKOEFS.grid.koefsColModel = new Ext.grid.ColumnModel([
 
 
 CPPVMENU.grid.main_CFG = {
+	/*
         id: 'menu35-grid-main'
         ,url: '/assets/components/cppvkoefs/mng/connector.php'
         ,baseParams: { action: 't1/getlist' }
         ,fields: ['id','name','dist','count','classauto','k_sezon','k_auto','k_pass','k_dist','price','restint_1','restint_2']
+   */      
+        store: CPPVMENU.MainStoreCfg
+        ,title:'Заголовок'       
         ,paging: true
+        ,width: 800
+        //,height:
         ,pageSize: 50
         ,remoteSort: false
         ,anchor: '97%'
-        ,autoExpandColumn: 'name'
+        //,autoExpandColumn: 'name'
         ,save_action: 't1/updateFromGrid' 
         ,autosave: true
-        ,cm: CPPVKOEFS.grid.koefsColModel
+        ,cm: CPPVMENU.grid.mainColModel
         ,tbar:[
             {
      style:{marginBottom: '10px', marginRight: '20px'}       	
     ,xtype: 'textfield'
-    ,id: 'cppvkoefs_koefs-search-filter'
+    ,id: 'menu35-mg-search-filter'
     ,emptyText: 'Поиск...'
     ,listeners: {
         'change': {fn:this.search,scope:this}
@@ -187,7 +152,7 @@ CPPVMENU.grid.main_CFG = {
         ,text: "Удалить запись?"
         ,url: this.config.url
         ,params: {
-            action: 't1/remove'
+            action: 'main/remove'
             ,id: this.menu.record.id 
         }
         ,listeners: {
@@ -207,8 +172,20 @@ CPPVMENU.grid.main_CFG = {
 	}
 };
 
+CPPVMENU.grid.main_start=function () {
+console.log('CPPVMENU.grid.main_start');
+
+CPPVMENU.mainStore = new Ext.data.JsonStore(CPPVMENU.MainStoreCfg);
+
+CPPVMENU.grid.main=new Ext.grid.EditorGridPanel(CPPVMENU.grid.main_CFG); 
 
 
+CPPVMENU.grid.main.render('menu35-main-grid');
+
+CPPVMENU.mainStore.load();
+
+
+}
 
 
 

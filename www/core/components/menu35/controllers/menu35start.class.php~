@@ -32,15 +32,15 @@ class Menu35Menu35startManagerController extends modExtraManagerController {
     public function checkPermissions() { return true;}
     public function process(array $scriptProperties = array()) {}
     public function getPageTitle() {
-    	 return 'Редактор параметров калькулятора';
+    	 return 'Редактор menu';
     	 
     	 }
     	 
     public function loadCustomCssJs() {
-        $this->addJavascript($this->koefs->config['jsUrl'].'widgets/stores.js');
-        $this->addJavascript($this->koefs->config['jsUrl'].'widgets/main.grid.js');
-        $this->addJavascript($this->koefs->config['jsUrl'].'widgets/home.panel.js');
-        $this->addLastJavascript($this->koefs->config['jsUrl'].'sections/index.js');
+        $this->addJavascript($this->menu35->config['jsUrl'].'widgets/stores.js');
+        $this->addJavascript($this->menu35->config['jsUrl'].'widgets/home.panel.js');
+        $this->addLastJavascript($this->menu35->config['jsUrl'].'sections/index.js');
+        $this->addJavascript($this->menu35->config['jsUrl'].'widgets/main.grid.js');
 
 
 /*
