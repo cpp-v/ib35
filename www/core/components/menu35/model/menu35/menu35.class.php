@@ -1,9 +1,19 @@
 <?php
-class Menu35 {
+class Menu35CFG {
     public $modx;
     public $config = array();
     function __construct(modX &$modx,array $config = array()) {
-        $this->modx =& $modx;
+
+/*
+include_once $_SERVER['DOCUMENT_ROOT']."/mdx/assets/cppv/UTILS/DEBUG/debugM.php";
+CppDebug::$arrItems[5]=new CppDebug(array('dir'=>$_SERVER['DOCUMENT_ROOT'].'/mdx'));
+$dbg2=&CppDebug::$arrItems[5];
+$dbg2->clear();
+$dbg2->add(__FILE__);
+$dbg2->add(date("d.m.Y H:i:s"));
+*/
+
+        $this->modx =&$modx;
  
         $basePath = $this->modx->getOption('core_path').'components/menu35/';
         $assetsUrl = $this->modx->getOption('assets_url').'components/menu35/mng/';
@@ -19,7 +29,15 @@ class Menu35 {
             'assetsUrl' => $assetsUrl,
             'connectorUrl' => $assetsUrl.'connector.php',
         ),$config);
-        $this->modx->addPackage('cppvmenu',$this->config['modelPath']);
+        
+/*
+$dbg2->addVar('path',$this->config['modelPath']);
+$this->modx->addPackage('cppvmenu',$this->config['modelPath']);       
+$c = $this->modx->newQuery('Menu35');
+$c->prepare();
+$sql=$c->toSQL();  $dbg2->addVar('$sql',$sql);
+*/
+        
     }
         
 public  function getChunk($name,$properties = array()) {
@@ -55,4 +73,4 @@ private function _getTplChunk($name,$postfix = '.chunk.tpl') {
         
         
         
-}
+};

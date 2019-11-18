@@ -32,7 +32,7 @@ class Menu35Menu35startManagerController extends modExtraManagerController {
     public function checkPermissions() { return true;}
     public function process(array $scriptProperties = array()) {}
     public function getPageTitle() {
-    	 return 'Редактор menu';
+    	 return 'Редактор меню';
     	 
     	 }
     	 

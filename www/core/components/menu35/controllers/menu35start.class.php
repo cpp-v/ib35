@@ -7,7 +7,7 @@ class Menu35Menu35startManagerController extends modExtraManagerController {
     public $koefs; 
     public function initialize() {
             
-        $this->menu35 = new Menu35($this->modx);
+        $this->menu35 = new Menu35CFG($this->modx);
         $this->addJavascript($this->menu35->config['jsUrl'].'js.js');
         /*                
         $this->addCss($this->koefs->config['cssUrl'].'css.css');

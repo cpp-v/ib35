@@ -65,8 +65,8 @@ CPPVMENU.grid.main_CFG = {
         ,baseParams: { action: 't1/getlist' }
         ,fields: ['id','name','dist','count','classauto','k_sezon','k_auto','k_pass','k_dist','price','restint_1','restint_2']
    */      
-        store: CPPVMENU.MainStoreCfg
-        ,title:'Заголовок'       
+        //store: CPPVMENU.MainStoreCfg
+        title:'Заголовок'       
         ,paging: true
         ,width: 800
         //,height:
@@ -177,12 +177,14 @@ console.log('CPPVMENU.grid.main_start');
 
 CPPVMENU.mainStore = new Ext.data.JsonStore(CPPVMENU.MainStoreCfg);
 
-CPPVMENU.grid.main=new Ext.grid.EditorGridPanel(CPPVMENU.grid.main_CFG); 
 
+
+CPPVMENU.grid.main=new Ext.grid.EditorGridPanel(CPPVMENU.grid.main_CFG); 
+CPPVMENU.grid.main.store=CPPVMENU.mainStore;
 
 CPPVMENU.grid.main.render('menu35-main-grid');
 
-CPPVMENU.mainStore.load();
+	CPPVMENU.mainStore.load();
 
 
 }

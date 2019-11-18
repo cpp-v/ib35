@@ -1,12 +1,13 @@
 <?php
+/*
 include_once $_SERVER['DOCUMENT_ROOT']."/mdx/assets/cppv/UTILS/DEBUG/debugM.php";
 CppDebug::$arrItems[1]=new CppDebug(array('dir'=>$_SERVER['DOCUMENT_ROOT'].'/mdx'));
 $dbg=&CppDebug::$arrItems[1];
-$dbg->clear(); 
+//$dbg->clear(); 
 $dbg->add(__FILE__);
 
 $dbg->add(date("d.m.Y H:i:s"));
-
+*/
 class Menu35GetListProcessor extends modObjectGetListProcessor {
 
     public $classKey = 'Menu35';
@@ -21,14 +22,14 @@ class Menu35GetListProcessor extends modObjectGetListProcessor {
     }
     $c->sortby('restint_2','ASC');
     $c->prepare();
-
+/*
     include_once $_SERVER['DOCUMENT_ROOT']."/mdx/assets/cppv/UTILS/DEBUG/debugM.php";
     $dbg=&CppDebug::$arrItems[1];
 		$dbg->add(__METHOD__);	
 		//$c->prepare();
 		$sql=$c->toSQL();
 		$dbg->addVar('sql',$sql);
-
+*/
     return $c;
 }
     public $defaultSortField = 'id';
