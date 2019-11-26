@@ -41,6 +41,9 @@ class Menu35Menu35startManagerController extends modExtraManagerController {
         $this->addJavascript($this->menu35->config['jsUrl'].'widgets/home.panel.js');
         $this->addLastJavascript($this->menu35->config['jsUrl'].'sections/index.js');
         $this->addJavascript($this->menu35->config['jsUrl'].'widgets/main.grid.js');
+        $this->addJavascript('/mdx/assets/cppv/COM/RowEditor.js');
+        $this->addJavascript('/mdx/assets/cppv/COM/RowEditor.css');
+        $this->addJavascript('/mdx/assets/cppv/COM/App.js');
 
 
 /*

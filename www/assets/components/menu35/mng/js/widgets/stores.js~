@@ -4,7 +4,7 @@ CPPVMENU.writer_1 = new Ext.data.JsonWriter({
     });
 
 CPPVMENU.MainStoreCfg={ 
- baseParams:{action: 'getlist'},
+ baseParams:{action: 'main/getlist'},
  root: 'results',
  totalProperty: 'total',
  idProperty: 'id',

@@ -56,27 +56,6 @@ CPPVMENU.grid.mainColModel = new Ext.grid.ColumnModel([
 
 ]);
 
-	
- function onAdd (btn, ev) {
-        var u = new CPPVMENU.mainStore.recordType({
-           name : 'Новое название',
-           description : '',
-        });
-        CPPVMENU.rowEditor.stopEditing();
-        CPPVMENU.mainStore.insert(0, u);
-        CPPVMENU.rowEditor.startEditing(0);
- }
-    /**
-     * onDelete
-     */
-   function onDelete () {
-        var rec = CPPVMENU.grid.main.getSelectionModel().getSelected();
-        if (!rec) {
-            return false;
-        }
-        CPPVMENU.grid.main.store.remove(rec);
-  }
-	
 
 
 CPPVMENU.grid.main_CFG = {
@@ -95,10 +74,9 @@ CPPVMENU.grid.main_CFG = {
         ,remoteSort: false
         ,anchor: '97%'
         //,autoExpandColumn: 'name'
-        //,save_action: 'main/updateFromGrid' 
+        ,save_action: 't1/updateFromGrid' 
         ,autosave: true
-        ,eitor:CPPVMENU.rowEditor
-        ,cm: CPPVMENU.grid.mainColModel        
+        ,cm: CPPVMENU.grid.mainColModel
         ,tbar:[
             {
      style:{marginBottom: '10px', marginRight: '20px'}       	
@@ -121,19 +99,67 @@ CPPVMENU.grid.main_CFG = {
                 }
     
              }
-             
-		,{
-            text: 'Add',
-            iconCls: 'silk-add',
-            handler: onAdd
-        }, '-', {
-            text: 'Delete',
-            iconCls: 'silk-delete',
-            handler: CPPVMENU.onDelete
-        }, '-'             
-             
      ]
+,getMenu: function() {
+    return [{
+        text: 'Удалить'
+        ,handler: this.remove
+    }
+   ,{
+        text: 'Добавить строку'
+        ,handler: function(){
+        MODx.msg.confirm({
+        title: "Добавить запись "
+        ,text: "Добавить строку?"
+        ,url: this.config.url
+        ,params: {
+            action: 'main/create'
+            //,id: this.menu.record.id 
+        }
+        ,listeners: {
+            'success': {fn:this.refresh,scope:this}
+        }
+    }); 
+ 
+ 
+        }
+    },
+    {
+        text: 'Дублировать строку'
+        ,handler: function(){
+        MODx.msg.confirm({
+        title: "Дубль записи "
+        ,text: "Сделать копию строки?"
+        ,url: this.config.url
+        ,params: {
+            action: 't1/dubl'
+            ,id: this.menu.record.id 
+        }
+        ,listeners: {
+            'success': {fn:this.refresh,scope:this}
+        }
+    }); 
+ 
+ 
+        }
+    }
 
+];
+}
+   ,remove: function() {
+      MODx.msg.confirm({
+        title: "Удаление записи"
+        ,text: "Удалить запись?"
+        ,url: this.config.url
+        ,params: {
+            action: 'main/remove'
+            ,id: this.menu.record.id 
+        }
+        ,listeners: {
+            'success': {fn:this.refresh,scope:this}
+        }
+    });
+   }
    ,search: function(tf,nv,ov) {
         var s = this.getStore();
         s.baseParams.query = tf.getValue();
@@ -147,34 +173,21 @@ CPPVMENU.grid.main_CFG = {
 };
 
 CPPVMENU.grid.main_start=function () {
-	
-	
 console.log('CPPVMENU.grid.main_start');
 
 CPPVMENU.rowEditor = new Ext.ux.grid.RowEditor({
-       saveText: 'Update' 
+        saveText: 'Update'
     });
-    
-    
+
 CPPVMENU.mainStore = new Ext.data.JsonStore(CPPVMENU.MainStoreCfg);
 
-CPPVMENU.grid.main=new Ext.grid.GridPanel(CPPVMENU.grid.main_CFG);
-
-CPPVMENU.rowEditor.grid=CPPVMENU.grid.main; 
- 
-//CPPVMENU.grid.main=new Ext.grid.EditorGridPanel(CPPVMENU.grid.main_CFG);
-
-//CPPVMENU.grid.main=new MODx.grid.Grid(CPPVMENU.grid.main_CFG);
- 
+CPPVMENU.grid.main=new Ext.grid.EditorGridPanel(CPPVMENU.grid.main_CFG); 
+//CPPVMENU.grid.main=new MODx.grid.Grid(CPPVMENU.grid.main_CFG); 
 CPPVMENU.grid.main.store=CPPVMENU.mainStore;
 
 CPPVMENU.grid.main.render('menu35-main-grid');
 
 	CPPVMENU.mainStore.load();
-
-    /**
-     * onAdd
-     */
 
 
 }
