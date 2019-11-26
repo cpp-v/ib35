@@ -1,6 +1,6 @@
 <?php
 require_once (dirname(__FILE__).'/update.class.php');
-class KoefsUpdateFromGridProcessor extends KoefsUpdateProcessor {
+class CppvkoefsUpdateFromGridProcessor extends CppvkoefsUpdateProcessor {
     public function initialize() {
         $data = $this->getProperty('data');
                            //$data_str = var_export($data, TRUE); //add_test_str('$data_str='.$data_str);        
@@ -12,4 +12,4 @@ class KoefsUpdateFromGridProcessor extends KoefsUpdateProcessor {
         return parent::initialize();
     }
 }
-return 'KoefsUpdateFromGridProcessor';
+return 'CppvkoefsUpdateFromGridProcessor';
