@@ -113,7 +113,7 @@ CPPVMENU.grid.main_CFG = {
         ,text: "Добавить строку?"
         ,url: this.config.url
         ,params: {
-            action: 't1/create'
+            action: 'main/create'
             //,id: this.menu.record.id 
         }
         ,listeners: {
@@ -177,9 +177,8 @@ console.log('CPPVMENU.grid.main_start');
 
 CPPVMENU.mainStore = new Ext.data.JsonStore(CPPVMENU.MainStoreCfg);
 
-
-
 CPPVMENU.grid.main=new Ext.grid.EditorGridPanel(CPPVMENU.grid.main_CFG); 
+//CPPVMENU.grid.main=new MODx.grid.Grid(CPPVMENU.grid.main_CFG); 
 CPPVMENU.grid.main.store=CPPVMENU.mainStore;
 
 CPPVMENU.grid.main.render('menu35-main-grid');
