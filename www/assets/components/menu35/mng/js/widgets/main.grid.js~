@@ -1,5 +1,56 @@
 //alert("streets.grid.js  start");
 //Ext.onReady(function(){
+function onAdd(btn, ev) {
+        var u = new CPPVMENU.mainStore.recordType({
+           name : 'Новое название',
+           description : '',
+        });
+        //CPPVMENU.grid.main.stopEditing();
+        CPPVMENU.mainStore.insert(0, u);
+        //CPPVMENU.grid.main.startEditing(0,1);
+                           
+        CPPVMENU.grid.main.store.reload();
+ }
+
+ function onDelete() {
+       var index = CPPVMENU.grid.main.getSelectionModel().getSelectedCell();
+       if (!index) {
+            return false;
+       }
+       var rec = CPPVMENU.mainStore.getAt(index[0]);
+ 	
+      MODx.msg.confirm({
+        title: "Удаление записи"
+        ,text: "Удалить запись?"
+        ,url: '/mdx/assets/components/menu35/mng/connector.php'
+        ,params: {
+            action: 'main/remove'
+            ,id: rec.id 
+        }  
+        ,listeners: {
+            'success':{fn:this.refresh,scope:this} 
+        }
+    });
+ 	
+/* 	
+        //var sm = CPPVMENU.grid.main.getSelectionModel();
+        var index = CPPVMENU.grid.main.getSelectionModel().getSelectedCell();
+        if (!index) {
+            return false;
+        }
+        var rec = CPPVMENU.mainStore.getAt(index[0]);
+        CPPVMENU.mainStore.remove(rec);
+*/        
+/*
+        var rec=sm.getSelected();
+        if (!rec) {
+            return false;
+        }
+        CPPVMENU.grid.main.store.remove(rec);
+        CPPVMENU.grid.main.store.reload();
+*/
+  }
+
 var tbar=[
             {
      style:{marginBottom: '10px', marginRight: '20px'}       	
@@ -22,6 +73,23 @@ var tbar=[
                 }
     
              }
+		,{
+            text: '+',
+            iconCls: 'silk-add',
+            handler: onAdd
+        }, '-', {
+            text: '-',
+            iconCls: 'silk-delete',
+            handler: onDelete
+        }, '-', {
+            text: 'обновить',
+            iconCls: 'silk-delete',
+            handler: function () {
+            	CPPVMENU.grid.main.store.reload();
+            } 	
+        }, '-'             
+
+
      ];
 	    
 CPPVMENU.grid.mainColModel = new Ext.grid.ColumnModel([

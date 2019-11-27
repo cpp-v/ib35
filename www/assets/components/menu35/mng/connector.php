@@ -4,7 +4,7 @@ ini_set('display_errors', 1);
 
 
 include_once $_SERVER['DOCUMENT_ROOT']."/mdx/assets/cppv/UTILS/DEBUG/debugM.php";
-CppDebug::$arrItems[0]=new CppDebug(array('dir'=>__DIR__));
+CppDebug::$arrItems[0]=new CppDebug(array('dir'=>$_SERVER['DOCUMENT_ROOT'].'/mdx'));
 $dbg1=&CppDebug::$arrItems[0];
 $dbg1->clear(); 
 $dbg1->add(__FILE__);
@@ -37,12 +37,24 @@ $modx->lexicon->load('menu35:default');
 //$dbg1->addVar('$path',$path);
 //$dbg1->addMix('$_POST',$_POST);
                                    //      $dbg1->add("4");
+$action=$_POST['action'];
 
 if($_POST['xaction']=='read') $_POST['xaction']='getlist';
+if($_POST['xaction']=='destroy') $_POST['xaction']='remove';
 
 $_POST['action']=$_POST['table'].'/'.$_POST['xaction'];
-$_REQUEST['action']=$_POST['table'].'/'.$_POST['xaction'];    $dbg1->addMix('$_REQUEST',$_REQUEST);
+$_REQUEST['action']=$_POST['table'].'/'.$_POST['xaction'];  
+
+if(empty($_POST['xaction'])) {$_POST['action']=$action; $_REQUEST['action']=$action;}   $dbg1->addMix('$_REQUEST',$_REQUEST);
+
+
 $modx->request->handleRequest(array(
     'processors_path' => MODX_CORE_PATH.'components/menu35/processors/',  
     'location' => '',
 ));
+
+
+
+
+
+
