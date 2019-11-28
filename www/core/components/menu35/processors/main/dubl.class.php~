@@ -1,12 +1,12 @@
 <?php
 class CppvkoefsDublProcessor extends modObjectCreateProcessor {
-    public $classKey = 'TaxiKoefs';
-    public $languageTopics = array('counters:default');
-    public $objectType = 'morpher35.morph35adm';
+    public $classKey = 'Menu35';
+    public $languageTopics = array('menu35M:default');
+    public $objectType = 'menu35M.menu35M';
     //public $permission='CountersCityCreate';
     public function beforeSet() {
         $obj=$this->modx->getObject('TaxiKoefs',$this->getProperty('id'));     	
-    	  $arr=$obj->toArray();          $this->modx->log(1,'$arr='.print_r($arr,true));
+    	  $arr=$obj->toArray();         // $this->modx->log(1,'$arr='.print_r($arr,true));
         $this->setProperties($arr); 	  
         return parent::beforeSet();
 

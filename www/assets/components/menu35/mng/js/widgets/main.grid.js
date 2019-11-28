@@ -1,15 +1,35 @@
 //alert("streets.grid.js  start");
 //Ext.onReady(function(){
 function onAdd(btn, ev) {
+      MODx.msg.confirm({
+        title: "Добавление записи"
+        ,text: "Добавить запись?"
+        ,url: '/mdx/assets/components/menu35/mng/connector.php'
+        ,params: {
+            action: 'main/create'
+             
+        }  
+        ,listeners: {
+            'success':{fn:function (){ 
+             CPPVMENU.grid.main.store.reload();
+            },scope:this} 
+        }
+        });
+        
+        
+        /*
         var u = new CPPVMENU.mainStore.recordType({
            name : 'Новое название',
            description : '',
         });
+        */
         //CPPVMENU.grid.main.stopEditing();
-        CPPVMENU.mainStore.insert(0, u);
+        //CPPVMENU.mainStore.insert(0, u);
         //CPPVMENU.grid.main.startEditing(0,1);
+        //CPPVMENU.grid.main.store.reload();
+        
+        
                            
-        CPPVMENU.grid.main.store.reload();
  }
 
  function onDelete() {
@@ -17,7 +37,7 @@ function onAdd(btn, ev) {
        if (!index) {
             return false;
        }
-       var rec = CPPVMENU.mainStore.getAt(index[0]);
+      var rec = CPPVMENU.mainStore.getAt(index[0]);
  	
       MODx.msg.confirm({
         title: "Удаление записи"
@@ -33,6 +53,38 @@ function onAdd(btn, ev) {
             },scope:this} 
         }
     });
+    
+  }
+function onDuble() {
+       var index = CPPVMENU.grid.main.getSelectionModel().getSelectedCell();
+       if (!index) {
+            return false;
+       }
+       var rec = CPPVMENU.mainStore.getAt(index[0]);
+
+       MODx.msg.confirm({
+        title: "Дубль записи"
+        ,text: "Сделать копию строки?"
+        ,url: '/mdx/assets/components/menu35/mng/connector.php'
+        ,params: {
+            action: 'main/dubl'
+            ,id: rec.id 
+        }
+        ,listeners: {
+            'success': {fn:function (){CPPVMENU.grid.main.store.reload();},scope:this}
+        }
+    }); 
+	
+	
+	
+}
+
+
+
+
+
+
+   
  	
 /* 	
         //var sm = CPPVMENU.grid.main.getSelectionModel();
@@ -51,7 +103,6 @@ function onAdd(btn, ev) {
         CPPVMENU.grid.main.store.remove(rec);
         CPPVMENU.grid.main.store.reload();
 */
-  }
 
 var tbar=[
             {
@@ -85,10 +136,14 @@ var tbar=[
             handler: onDelete
         }, '-', {
             text: 'обновить',
-            iconCls: 'silk-delete',
+            iconCls: 'silk-refresh',
             handler: function () {
             	CPPVMENU.grid.main.store.reload();
             } 	
+        }, '-', {
+            text: 'дубль',
+            iconCls: 'silk-duble',
+            handler: onDuble
         }, '-'             
 
 
@@ -138,12 +193,15 @@ CPPVMENU.grid.mainColModel = new Ext.grid.ColumnModel([
             header: 'ID'
             ,dataIndex: 'id'
             ,sortable: true
-            ,width: 5
+            ,width: 20
+            ,hidden:true
         },{
             header: 'Родитель'
             ,dataIndex: 'parent'
             ,sortable: true
-            ,width: 5
+            ,width: 20
+            ,hidden:true
+            
         }
                 
 
@@ -191,7 +249,7 @@ CPPVMENU.grid.main_CFG = {
             'success': {fn:this.refresh,scope:this}
         }
     }); 
- 
+  
  
         }
     },
